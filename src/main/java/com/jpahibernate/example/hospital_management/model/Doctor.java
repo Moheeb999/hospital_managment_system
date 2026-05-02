@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Doctor {
 
     @Id
-    @Column(name="doctor_id",nullable = false)
+    @Column(name="doctor_id",nullable = false,unique = true)
     private int id;
 
     @Column(name ="doctor_name",nullable = false)
@@ -34,5 +34,9 @@ public class Doctor {
 
     @Column(name="doctor_spec",nullable = false)
     private String specialization;
+
+
+    @Column(name="doctor_mobile",nullable = false,unique = true)
+    private String mobile;
 
 }
