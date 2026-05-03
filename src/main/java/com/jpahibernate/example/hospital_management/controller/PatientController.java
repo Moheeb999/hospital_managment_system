@@ -4,10 +4,10 @@ package com.jpahibernate.example.hospital_management.controller;
 import com.jpahibernate.example.hospital_management.model.Patient;
 import com.jpahibernate.example.hospital_management.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 
@@ -25,4 +25,30 @@ public class PatientController {
         return response;
 
     }
+
+    @GetMapping("/findAllPatients")
+    public List<Patient> findAllPatients(){
+        List<Patient> patientList=patientService.findAllPatients();
+        return patientList;
+    }
+
+
+    @GetMapping("/findPatientbyId/{id}")
+    public Patient findbyPatientById(@PathVariable int id){
+        Patient optionalPatient  = patientService.findPatientById(id);
+        return optionalPatient;
+    }
+
+    @GetMapping("/countAllPatients")
+    public String countAllPatients(){
+        return patientService.countNoPatients();
+    }
+
+
+    @DeleteMapping("/deletingbyid/{id}")
+    public String deleteWithId(@PathVariable  int id){
+        return patientService.deleteById(id);
+    }
+
+
 }
