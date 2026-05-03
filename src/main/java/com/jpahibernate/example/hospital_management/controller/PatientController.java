@@ -50,5 +50,13 @@ public class PatientController {
         return patientService.deleteById(id);
     }
 
+    @PutMapping("/update_put_patient/{id}")
+    public String update_put_patient(@PathVariable int id,@RequestBody Patient newPatient){
+        return patientService.update_patient_put(id,newPatient);
+    }
 
+    @PatchMapping("/update_patch_patient/{id}")
+    public String update_patch_patient(@PathVariable int id,@RequestParam String newPhno,@RequestParam String newgender){
+        return patientService.update_patient_patch(id,newPhno,newgender);
+    }
 }

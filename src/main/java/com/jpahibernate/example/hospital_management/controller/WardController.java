@@ -40,4 +40,15 @@ public class WardController {
     public String deletebyid(@PathVariable int id){
         return wardService.deletebyid(id);
     }
+
+    @PutMapping("/update_put_ward/{id}")
+    public String update_put_ward(@PathVariable int id,@RequestBody Ward newWard){
+        return wardService.update_put_ward(id,newWard);
+    }
+
+    @PatchMapping("/update_patch_ward/{id}")
+    public String update_patch_ward(@PathVariable int id,@RequestParam int newBeds,@RequestParam int newAvail_beds){
+        return wardService.update_patch_ward(id,newBeds,newAvail_beds);
+    }
+
 }

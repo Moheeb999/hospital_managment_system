@@ -40,4 +40,33 @@ public class WardService  {
         return "The ID "+id+" has been successfully deleted";
     }
 
+    //Update via put -- Entire body it does
+    public String update_put_ward(int id,Ward newWard){
+        Ward existing =findbyid(id);
+        if(existing!=null){
+            wardRepository.save(newWard);
+            return "The ward record with ID"+id+"successfully updated";
+        }
+        else{
+            return "The ward record cannot be found as per ID "+id;
+        }
+    }
+
+    //Update via patch -- Single field
+    public String update_patch_ward(int id,int newBeds,int newAvail_beds){
+        Ward existing =findbyid(id);
+        if(existing!=null){
+            existing.setTotal_beds(newBeds);
+            existing.setAvail_beds(newAvail_beds);
+            wardRepository.save(existing);
+            return "The ward record with ID"+id+"successfully updated";
+        }
+        else{
+            return "The ward record cannot be found as per ID "+id;
+        }
+    }
+
+
+
+
 }
